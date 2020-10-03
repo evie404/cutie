@@ -30,7 +30,15 @@ func TestTablesFromConfig(t *testing.T) {
 		{
 			"errors on malformed file",
 			args{
-				filepath.Join("testdata", "badtables.yaml"),
+				filepath.Join("testdata", "bad_tables.yaml"),
+			},
+			nil,
+			true,
+		},
+		{
+			"errors on file with invalid tables",
+			args{
+				filepath.Join("testdata", "invalid_tables.yaml"),
 			},
 			nil,
 			true,

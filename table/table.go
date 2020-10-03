@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 
 	yaml "github.com/goccy/go-yaml"
+	"go.uber.org/multierr"
 )
 
 func TablesFromConfig(configFilepath string) ([]Table, error) {
@@ -18,6 +19,14 @@ func TablesFromConfig(configFilepath string) ([]Table, error) {
 	err = yaml.Unmarshal(data, &tables)
 	if err != nil {
 		return nil, fmt.Errorf("unmarshalling yaml: %w", err)
+	}
+
+	for _, table := range tables {
+		if table.IsValid() {
+			continue
+		}
+
+		return nil, fmt.Errorf("invalid config for table `%s`: %w", table.TableName, table.InvalidReasons())
 	}
 
 	return tables, nil
@@ -39,4 +48,22 @@ func (t *Table) Filename() string {
 
 func (t *Table) SQLFilename() string {
 	return fmt.Sprintf("%s.sql", t.Filename())
+}
+
+func (t *Table) IsValid() bool {
+	return t.InvalidReasons() == nil
+}
+
+func (t *Table) InvalidReasons() error {
+	var errs []error
+
+	if t.TableName == "" {
+		errs = append(errs, fmt.Errorf("table_name cannot be blank"))
+	}
+
+	if t.FilenameOverride != "" && t.TableName == t.FilenameOverride {
+		errs = append(errs, fmt.Errorf("filename_override `%s` cannot be same as table_name", t.FilenameOverride))
+	}
+
+	return multierr.Combine(errs...)
 }
