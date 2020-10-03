@@ -9,6 +9,8 @@ import (
 )
 
 func GenerateSQLCModels(tables []table.Table) error {
+	// TODO: check sqlc version and warn
+
 	err := GenerateSQLCConfig(tables)
 	if err != nil {
 		return fmt.Errorf("generating sqlc config: %w", err)

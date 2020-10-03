@@ -48,5 +48,7 @@ func DumpOne(dbConfig *pgconn.Config, table Table) error {
 		return fmt.Errorf("dumping table %s: %w", table.TableName, err)
 	}
 
+	// TODO: remove comments
+
 	return nil
 }
