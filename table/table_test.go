@@ -44,6 +44,14 @@ func TestTablesFromConfig(t *testing.T) {
 			true,
 		},
 		{
+			"errors on file with no tables",
+			args{
+				filepath.Join("testdata", "no_tables.yaml"),
+			},
+			nil,
+			true,
+		},
+		{
 			"load tables1.yaml",
 			args{
 				filepath.Join("testdata", "tables1.yaml"),

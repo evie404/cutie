@@ -29,6 +29,10 @@ func TablesFromConfig(configFilepath string) ([]Table, error) {
 		return nil, fmt.Errorf("invalid config for table `%s`: %w", table.TableName, table.InvalidReasons())
 	}
 
+	if len(tables) == 0 {
+		return nil, fmt.Errorf("no tables found in %s", configFilepath)
+	}
+
 	return tables, nil
 }
 
