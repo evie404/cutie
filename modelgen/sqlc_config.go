@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 
 	"github.com/rickypai/cutie/table"
 )
@@ -24,6 +25,13 @@ type v1PackageSettings struct {
 }
 
 func GenerateSQLCConfig(tables []table.Table) error {
+	var err error
+
+	err = generateSQLCModelsDir(tables)
+	if err != nil {
+		return fmt.Errorf("generating directories: %w", err)
+	}
+
 	config := generateSQLCConfig(tables)
 
 	configJson, err := json.MarshalIndent(config, "", "  ")
@@ -34,6 +42,19 @@ func GenerateSQLCConfig(tables []table.Table) error {
 	err = ioutil.WriteFile("sqlc.json", configJson, 0644)
 	if err != nil {
 		return fmt.Errorf("writing json file: %w", err)
+	}
+
+	return nil
+}
+
+func generateSQLCModelsDir(tables []table.Table) error {
+	var err error
+
+	for _, table := range tables {
+		err = os.MkdirAll(table.DbModelsDirPath(), 0644)
+		if err != nil {
+			return fmt.Errorf("creating directory %s: %w", table.DbModelsDirPath(), err)
+		}
 	}
 
 	return nil
