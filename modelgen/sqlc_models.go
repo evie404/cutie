@@ -41,7 +41,7 @@ func GenerateSQLCModelMocks(tables []table.Table) error {
 
 		err := cmd.Run()
 		if err != nil {
-			return fmt.Errorf("generating sqlc mocks: %w", err)
+			return fmt.Errorf("generating sqlc mocks for table %s: %w", table.TableName, err)
 		}
 	}
 
