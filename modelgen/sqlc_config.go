@@ -51,7 +51,7 @@ func generateSQLCConfig(tables []table.Table) v1GenerateSettings {
 			Engine:        "postgresql",
 			EmitInterface: true,
 			Name:          table.Filename(),
-			Path:          table.GoModelDirPath(),
+			Path:          table.DbModelsDirPath(),
 		})
 	}
 

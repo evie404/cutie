@@ -20,14 +20,14 @@ func (_ *Table) SchemaQueriesDirPath() string {
 	return filepath.Join("schema", "queries")
 }
 
-func (t *Table) GoModelDirPath() string {
-	return filepath.Join("gomodels", t.Filename())
+func (t *Table) DbModelsDirPath() string {
+	return filepath.Join("dbmodels", t.Filename())
 }
 
 func (t *Table) QuerierInterfaceGoPath() string {
-	return filepath.Join(t.GoModelDirPath(), "querier.go")
+	return filepath.Join(t.DbModelsDirPath(), "querier.go")
 }
 
 func (t *Table) QuerierMockGoPath() string {
-	return filepath.Join(t.GoModelDirPath(), "mock_"+t.Filename(), "querier_mock.go")
+	return filepath.Join(t.DbModelsDirPath(), "mock_"+t.Filename(), "querier_mock.go")
 }
