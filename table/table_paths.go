@@ -31,3 +31,7 @@ func (t *Table) QuerierInterfaceGoPath() string {
 func (t *Table) QuerierMockGoPath() string {
 	return filepath.Join(t.DbModelsDirPath(), "mock_"+t.Filename(), "querier_mock.go")
 }
+
+func (t *Table) ModelsDirPath() string {
+	return filepath.Join("models", t.Filename())
+}

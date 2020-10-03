@@ -1,0 +1,21 @@
+{
+  "version": "1",
+  "packages": [
+    {
+      "name": "twitter_user",
+      "engine": "postgresql",
+      "path": "dbmodels/twitter_user",
+      "schema": "schema/tables/twitter_user.sql",
+      "queries": "schema/queries/twitter_user.sql",
+      "emit_interface": true
+    },
+    {
+      "name": "twitter_tweet",
+      "engine": "postgresql",
+      "path": "dbmodels/twitter_tweet",
+      "schema": "schema/tables/twitter_tweet.sql",
+      "queries": "schema/queries/twitter_tweet.sql",
+      "emit_interface": true
+    }
+  ]
+}
