@@ -6,5 +6,5 @@ require (
 	github.com/goccy/go-yaml v1.8.2
 	github.com/jackc/pgconn v1.7.0
 	github.com/stretchr/testify v1.6.1
-	go.uber.org/multierr v1.1.0
+	go.uber.org/multierr v1.6.0
 )
