@@ -17,7 +17,7 @@ While it is tempting to use the same model across all context, we might run into
 
 Addressing all of the above concerns, we might use three different struct types to represent each layer in our application:
 
-- A database model `UserRow` that makes use of `sql.Null64` types
+- A database model `UserRow` that makes use of `sql.NullInt64` types
 - An application model `user.User` that makes use of named types like `*UserID` instead of `*int64`
 - Protobuf message `proto_user.User` for exposing the model to external users
 
