@@ -1,13 +1,12 @@
 # cutie
 
-cutie is an opinionated go code generator for database models born out of a zealous drive to enforce separation and types for maintainability and testability.
+cutie is an opinionated go code generator for database models born out of a zealous drive to enforce separation and types for maintainability and testability. It is still a work in progress.
 
-Core tenants:
+It's core design can be found in [DESIGN.md](DESIGN.md).
 
-- Separation of Concern
-- Type safety
-- Transparency
-- Testable at every layer
+## Present capabilities
+
+cutie currently supports the generation of the database models from PostgresSQL schemas with [sqlc](https://github.com/kyleconroy/sqlc) along with mocks with [gomock](https://github.com/golang/mock). At present, cutie expects users to supply their own application and API models. The future plan of cutie is to also generate protobuf messages for API and integrate with the models from the other layers.
 
 ## Components
 
