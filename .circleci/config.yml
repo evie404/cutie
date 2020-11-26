@@ -3,12 +3,27 @@ jobs:
   "Go build":
     docker:
       - image: circleci/golang:1.15
+        environment:
+          DATABASE_URL: postgresql://test@localhost/testdb
+      - image: circleci/postgres:11.9-ram
+        environment:
+          POSTGRES_USER: test
+          POSTGRES_DB: testdb
+          POSTGRES_HOST_AUTH_METHOD: trust
 
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
       - run: go build -v ./...
+      - run: go build cmd/main.go
       - run: go test -v ./...
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y postgresql-client
+      - run: psql -Atx ${DATABASE_URL} testdb < examples/twitter/schema/tables/twitter_tweet.sql
+      - run: psql -Atx ${DATABASE_URL} testdb < examples/twitter/schema/tables/twitter_user.sql
+      - run: go get github.com/kyleconroy/sqlc/cmd/sqlc
+      - run: GO111MODULE=on go get github.com/golang/mock/mockgen@v1.4.4
+      - run: (cd examples/twitter && ../../main)
 workflows:
   go:
     jobs:
