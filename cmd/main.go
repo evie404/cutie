@@ -22,6 +22,11 @@ func main() {
 		log.Fatalf("error dumping tables: %s", err)
 	}
 
+	err = table.CreateQueryAll(tables)
+	if err != nil {
+		log.Fatalf("error create query files: %s", err)
+	}
+
 	err = modelgen.GenerateSQLCModels(tables)
 	if err != nil {
 		log.Fatalf("error generating SQLC models: %s", err)
