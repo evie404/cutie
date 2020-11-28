@@ -51,7 +51,7 @@ func generateSQLCModelsDir(tables []table.Table) error {
 	var err error
 
 	for _, table := range tables {
-		err = os.MkdirAll(table.DbModelsDirPath(), 0644)
+		err = os.MkdirAll(table.DbModelsDirPath(), 0777)
 		if err != nil {
 			return fmt.Errorf("creating directory %s: %w", table.DbModelsDirPath(), err)
 		}

@@ -24,7 +24,7 @@ func DumpAll(dbConfig *pgconn.Config, tables []Table) error {
 func DumpOne(dbConfig *pgconn.Config, table Table) error {
 	var err error
 
-	err = os.MkdirAll(table.SchemaTablesDirPath(), 0644)
+	err = os.MkdirAll(table.SchemaTablesDirPath(), 0777)
 	if err != nil {
 		return fmt.Errorf("creating directory %s: %w", table.SchemaTablesDirPath(), err)
 	}
