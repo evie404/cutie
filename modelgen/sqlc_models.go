@@ -43,7 +43,7 @@ func renameSQLCModelNames(tables []table.Table) error {
 			continue
 		}
 
-		defaultName := sqlcDefaultClassName(table.TableName)
+		defaultName := sqlcDefaultClassName(table.Filename())
 
 		if table.ClassName == defaultName {
 			continue
