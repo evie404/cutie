@@ -9,6 +9,10 @@ import (
 
 type Config struct {
 	Tables []Table `yaml:"tables"`
+
+	SchemaTablesDirOverride  string `yaml:"schema_tables_dir"`
+	SchemaQueriesDirOverride string `yaml:"schema_queries_dir"`
+	DbModelsDirOverride      string `yaml:"dbmodels_dir"`
 }
 
 func ParseConfigFromYAMLPath(configFilepath string) (*Config, error) {
@@ -24,8 +28,12 @@ func ParseConfigFromYAMLPath(configFilepath string) (*Config, error) {
 		return nil, fmt.Errorf("unmarshalling yaml: %w", err)
 	}
 
-	for _, table := range config.Tables {
+	for i, table := range config.Tables {
 		if table.IsValid() {
+			config.Tables[i].schemaTablesDirOverride = config.SchemaTablesDirOverride
+			config.Tables[i].schemaQueriesDirOverride = config.SchemaQueriesDirOverride
+			config.Tables[i].dbModelsDirOverride = config.DbModelsDirOverride
+
 			continue
 		}
 

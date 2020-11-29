@@ -1,0 +1,10 @@
+tables:
+  - name: table_ones
+    filename_override: table_one
+    model_class: TableOne
+  - name: table_twos
+    filename_override: table_two
+    model_class: TableTwo
+schema_tables_dir: "lol/schema_tables_dir"
+schema_queries_dir: "lol/schema_queries_dir"
+dbmodels_dir: "lol/dbmodels_dir"

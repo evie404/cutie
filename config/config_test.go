@@ -72,6 +72,36 @@ func TestParseConfigFromYAMLPath(t *testing.T) {
 			},
 			false,
 		},
+		{
+			"load tables with dir override",
+			args{
+				filepath.Join("testdata", "tables_with_dir_override.yaml"),
+			},
+			&Config{
+				Tables: []Table{
+					{
+						TableName:                "table_ones",
+						FilenameOverride:         "table_one",
+						ModelClass:               "TableOne",
+						schemaTablesDirOverride:  "lol/schema_tables_dir",
+						schemaQueriesDirOverride: "lol/schema_queries_dir",
+						dbModelsDirOverride:      "lol/dbmodels_dir",
+					},
+					{
+						TableName:                "table_twos",
+						FilenameOverride:         "table_two",
+						ModelClass:               "TableTwo",
+						schemaTablesDirOverride:  "lol/schema_tables_dir",
+						schemaQueriesDirOverride: "lol/schema_queries_dir",
+						dbModelsDirOverride:      "lol/dbmodels_dir",
+					},
+				},
+				SchemaTablesDirOverride:  "lol/schema_tables_dir",
+				SchemaQueriesDirOverride: "lol/schema_queries_dir",
+				DbModelsDirOverride:      "lol/dbmodels_dir",
+			},
+			false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
