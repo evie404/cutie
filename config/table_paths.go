@@ -30,7 +30,7 @@ func (t *Table) SchemaQueriesDirPath() string {
 
 func (t *Table) DbModelsDirPath() string {
 	if t.dbModelsDirOverride != "" {
-		return t.dbModelsDirOverride
+		return filepath.Join(t.dbModelsDirOverride, t.Filename())
 	}
 
 	return filepath.Join("dbmodels", t.Filename())

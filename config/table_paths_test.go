@@ -82,9 +82,10 @@ func TestTable_DbModelsDirPath(t *testing.T) {
 		{
 			"returns override if present",
 			Table{
+				TableName:           "hi",
 				dbModelsDirOverride: filepath.Join("lol", "path"),
 			},
-			filepath.Join("lol", "path"),
+			filepath.Join("lol", "path", "hi"),
 		},
 	}
 	for _, tt := range tests {
