@@ -9,7 +9,7 @@ import (
 type Table struct {
 	TableName        string `yaml:"name"`
 	FilenameOverride string `yaml:"filename_override"`
-	ClassName        string `yaml:"class_name"`
+	ModelClass       string `yaml:"model_class"`
 }
 
 func (t *Table) Filename() string {

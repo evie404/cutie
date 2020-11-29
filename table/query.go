@@ -6,7 +6,7 @@ import (
 	"text/template"
 )
 
-const queryTemplateRaw = `-- name: Get{{.ClassName}}ByID :one
+const queryTemplateRaw = `-- name: Get{{.ModelClass}}ByID :one
 SELECT * FROM {{.TableName}} WHERE id = $1 LIMIT 1;
 
 `

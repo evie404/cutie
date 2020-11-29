@@ -40,13 +40,13 @@ func GenerateSQLCModels(tables []table.Table) error {
 
 func renameSQLCModelNames(tables []table.Table) error {
 	for _, table := range tables {
-		if table.ClassName == "" {
+		if table.ModelClass == "" {
 			continue
 		}
 
-		defaultName := sqlcDefaultClassName(inflection.Singular(table.TableName))
+		defaultName := sqlcDefaultModelClass(inflection.Singular(table.TableName))
 
-		if table.ClassName == defaultName {
+		if table.ModelClass == defaultName {
 			continue
 		}
 
@@ -55,7 +55,7 @@ func renameSQLCModelNames(tables []table.Table) error {
 			"-from",
 			fmt.Sprintf("\"./%s\".%s", table.DbModelsDirPath(), defaultName),
 			"-to",
-			table.ClassName,
+			table.ModelClass,
 			"--force",
 		)
 		cmd.Stdout = os.Stdout
@@ -71,7 +71,7 @@ func renameSQLCModelNames(tables []table.Table) error {
 }
 
 // from internal/codegen/golang/struct.go
-func sqlcDefaultClassName(name string) string {
+func sqlcDefaultModelClass(name string) string {
 	// if rename := settings.Rename[name]; rename != "" {
 	// 	return rename
 	// }

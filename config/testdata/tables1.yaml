@@ -1,7 +1,7 @@
 tables:
   - name: table_ones
     filename_override: table_one
-    class_name: TableOne
+    model_class: TableOne
   - name: table_twos
     filename_override: table_two
-    class_name: TableTwo
+    model_class: TableTwo

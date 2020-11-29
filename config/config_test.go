@@ -62,12 +62,12 @@ func TestParseConfigFromYAMLPath(t *testing.T) {
 					{
 						TableName:        "table_ones",
 						FilenameOverride: "table_one",
-						ClassName:        "TableOne",
+						ModelClass:       "TableOne",
 					},
 					{
 						TableName:        "table_twos",
 						FilenameOverride: "table_two",
-						ClassName:        "TableTwo",
+						ModelClass:       "TableTwo",
 					},
 				},
 			},

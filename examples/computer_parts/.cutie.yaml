@@ -1,7 +1,7 @@
 tables:
   - name: make
   - name: cpu
-    class_name: CPU
+    model_class: CPU
   - name: harddrives
     filename_override: harddrive
-    class_name: HDD
+    model_class: HDD
