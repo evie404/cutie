@@ -5,12 +5,13 @@ import (
 	"os"
 
 	"github.com/jackc/pgconn"
+	"github.com/rickypai/cutie/config"
 	"github.com/rickypai/cutie/modelgen"
 	"github.com/rickypai/cutie/table"
 )
 
 func main() {
-	tables, err := table.TablesFromConfig(".cutie.yaml")
+	tables, err := config.TablesFromConfig(".cutie.yaml")
 	if err != nil {
 		log.Fatalf("error loading tables: %s", err)
 	}

@@ -2,39 +2,9 @@ package table
 
 import (
 	"fmt"
-	"io/ioutil"
 
-	yaml "github.com/goccy/go-yaml"
 	"go.uber.org/multierr"
 )
-
-func TablesFromConfig(configFilepath string) ([]Table, error) {
-	var tables []Table
-
-	data, err := ioutil.ReadFile(configFilepath)
-	if err != nil {
-		return nil, fmt.Errorf("reading file: %w", err)
-	}
-
-	err = yaml.Unmarshal(data, &tables)
-	if err != nil {
-		return nil, fmt.Errorf("unmarshalling yaml: %w", err)
-	}
-
-	for _, table := range tables {
-		if table.IsValid() {
-			continue
-		}
-
-		return nil, fmt.Errorf("invalid config for table `%s`: %w", table.TableName, table.InvalidReasons())
-	}
-
-	if len(tables) == 0 {
-		return nil, fmt.Errorf("no tables found in %s", configFilepath)
-	}
-
-	return tables, nil
-}
 
 type Table struct {
 	TableName        string `yaml:"table_name"`
