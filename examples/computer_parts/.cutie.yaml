@@ -1,6 +1,7 @@
-- table_name: make
-- table_name: cpu
-  class_name: CPU
-- table_name: harddrives
-  filename_override: harddrive
-  class_name: HDD
+tables:
+  - table_name: make
+  - table_name: cpu
+    class_name: CPU
+  - table_name: harddrives
+    filename_override: harddrive
+    class_name: HDD

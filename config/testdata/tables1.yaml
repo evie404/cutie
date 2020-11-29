@@ -1,6 +1,7 @@
-- table_name: table_ones
-  filename_override: table_one
-  class_name: TableOne
-- table_name: table_twos
-  filename_override: table_two
-  class_name: TableTwo
+tables:
+  - table_name: table_ones
+    filename_override: table_one
+    class_name: TableOne
+  - table_name: table_twos
+    filename_override: table_two
+    class_name: TableTwo

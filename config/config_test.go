@@ -10,14 +10,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTablesFromConfig(t *testing.T) {
+func TestParseConfigFromYAMLPath(t *testing.T) {
 	type args struct {
 		configFilepath string
 	}
 	tests := []struct {
 		name    string
 		args    args
-		want    []table.Table
+		want    *Config
 		wantErr bool
 	}{
 		{
@@ -57,16 +57,18 @@ func TestTablesFromConfig(t *testing.T) {
 			args{
 				filepath.Join("testdata", "tables1.yaml"),
 			},
-			[]table.Table{
-				{
-					TableName:        "table_ones",
-					FilenameOverride: "table_one",
-					ClassName:        "TableOne",
-				},
-				{
-					TableName:        "table_twos",
-					FilenameOverride: "table_two",
-					ClassName:        "TableTwo",
+			&Config{
+				Tables: []table.Table{
+					{
+						TableName:        "table_ones",
+						FilenameOverride: "table_one",
+						ClassName:        "TableOne",
+					},
+					{
+						TableName:        "table_twos",
+						FilenameOverride: "table_two",
+						ClassName:        "TableTwo",
+					},
 				},
 			},
 			false,
@@ -74,7 +76,7 @@ func TestTablesFromConfig(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := TablesFromConfig(tt.args.configFilepath)
+			got, err := ParseConfigFromYAMLPath(tt.args.configFilepath)
 			assert.Equal(t, tt.want, got)
 			if tt.wantErr {
 				assert.Error(t, err)

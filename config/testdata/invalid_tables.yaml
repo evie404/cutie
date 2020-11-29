@@ -1,4 +1,5 @@
-- table_name: table_ones
-  filename_override: table_one
-  class_name: TableOne
-- table_name:
+tables:
+  - table_name: table_ones
+    filename_override: table_one
+    class_name: TableOne
+  - table_name:
