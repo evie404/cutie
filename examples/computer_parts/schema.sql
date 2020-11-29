@@ -21,9 +21,9 @@ CREATE TABLE cpu (
     updated_at timestamp with time zone NOT NULL
 );
 
-DROP TABLE IF EXISTS hdd;
+DROP TABLE IF EXISTS harddrives;
 
-CREATE TABLE hdd (
+CREATE TABLE harddrives (
     id bigint NOT NULL,
     make_id bigint NOT NULL,
     name character varying(255) NOT NULL,

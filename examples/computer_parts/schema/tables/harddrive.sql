@@ -21,10 +21,10 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: hdd; Type: TABLE; Schema: public; Owner: postgres
+-- Name: harddrives; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.hdd (
+CREATE TABLE public.harddrives (
     id bigint NOT NULL,
     make_id bigint NOT NULL,
     name character varying(255) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE public.hdd (
 );
 
 
-ALTER TABLE public.hdd OWNER TO postgres;
+ALTER TABLE public.harddrives OWNER TO postgres;
 
 --
 -- PostgreSQL database dump complete

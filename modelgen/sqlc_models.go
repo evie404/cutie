@@ -6,6 +6,7 @@ import (
 	"os/exec"
 	"strings"
 
+	"github.com/jinzhu/inflection"
 	"github.com/rickypai/cutie/table"
 )
 
@@ -43,7 +44,7 @@ func renameSQLCModelNames(tables []table.Table) error {
 			continue
 		}
 
-		defaultName := sqlcDefaultClassName(table.Filename())
+		defaultName := sqlcDefaultClassName(inflection.Singular(table.TableName))
 
 		if table.ClassName == defaultName {
 			continue

@@ -18,11 +18,11 @@
       "emit_interface": true
     },
     {
-      "name": "hdd",
+      "name": "harddrive",
       "engine": "postgresql",
-      "path": "dbmodels/hdd",
-      "schema": "schema/tables/hdd.sql",
-      "queries": "schema/queries/hdd.sql",
+      "path": "dbmodels/harddrive",
+      "schema": "schema/tables/harddrive.sql",
+      "queries": "schema/queries/harddrive.sql",
       "emit_interface": true
     }
   ]
