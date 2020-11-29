@@ -1,0 +1,29 @@
+{
+  "version": "1",
+  "packages": [
+    {
+      "name": "make",
+      "engine": "postgresql",
+      "path": "dbmodels/make",
+      "schema": "schema/tables/make.sql",
+      "queries": "schema/queries/make.sql",
+      "emit_interface": true
+    },
+    {
+      "name": "cpu",
+      "engine": "postgresql",
+      "path": "dbmodels/cpu",
+      "schema": "schema/tables/cpu.sql",
+      "queries": "schema/queries/cpu.sql",
+      "emit_interface": true
+    },
+    {
+      "name": "hdd",
+      "engine": "postgresql",
+      "path": "dbmodels/hdd",
+      "schema": "schema/tables/hdd.sql",
+      "queries": "schema/queries/hdd.sql",
+      "emit_interface": true
+    }
+  ]
+}
