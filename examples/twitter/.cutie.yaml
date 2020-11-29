@@ -1,5 +1,5 @@
 tables:
-  - table_name: twitter_users
+  - name: twitter_users
     filename_override: twitter_user
-  - table_name: twitter_tweets
+  - name: twitter_tweets
     filename_override: twitter_tweet

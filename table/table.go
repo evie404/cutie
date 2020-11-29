@@ -7,7 +7,7 @@ import (
 )
 
 type Table struct {
-	TableName        string `yaml:"table_name"`
+	TableName        string `yaml:"name"`
 	FilenameOverride string `yaml:"filename_override"`
 	ClassName        string `yaml:"class_name"`
 }
@@ -32,11 +32,11 @@ func (t *Table) InvalidReasons() error {
 	var errs []error
 
 	if t.TableName == "" {
-		errs = append(errs, fmt.Errorf("table_name cannot be blank"))
+		errs = append(errs, fmt.Errorf("name cannot be blank"))
 	}
 
 	if t.FilenameOverride != "" && t.TableName == t.FilenameOverride {
-		errs = append(errs, fmt.Errorf("filename_override `%s` cannot be same as table_name", t.FilenameOverride))
+		errs = append(errs, fmt.Errorf("filename_override `%s` cannot be same as name", t.FilenameOverride))
 	}
 
 	return multierr.Combine(errs...)
