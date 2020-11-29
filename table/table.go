@@ -10,6 +10,10 @@ type Table struct {
 	TableName        string `yaml:"name"`
 	FilenameOverride string `yaml:"filename_override"`
 	ModelClass       string `yaml:"model_class"`
+
+	schemaTablesDirOverride  string
+	schemaQueriesDirOverride string
+	dbModelsDirOverride      string
 }
 
 func (t *Table) Filename() string {

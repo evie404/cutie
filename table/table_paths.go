@@ -12,15 +12,27 @@ func (t *Table) QuerySQLPath() string {
 	return filepath.Join(t.SchemaQueriesDirPath(), t.SQLFilename())
 }
 
-func (_ *Table) SchemaTablesDirPath() string {
+func (t *Table) SchemaTablesDirPath() string {
+	if t.schemaTablesDirOverride != "" {
+		return t.schemaTablesDirOverride
+	}
+
 	return filepath.Join("schema", "tables")
 }
 
-func (_ *Table) SchemaQueriesDirPath() string {
+func (t *Table) SchemaQueriesDirPath() string {
+	if t.schemaQueriesDirOverride != "" {
+		return t.schemaQueriesDirOverride
+	}
+
 	return filepath.Join("schema", "queries")
 }
 
 func (t *Table) DbModelsDirPath() string {
+	if t.dbModelsDirOverride != "" {
+		return t.dbModelsDirOverride
+	}
+
 	return filepath.Join("dbmodels", t.Filename())
 }
 

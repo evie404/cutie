@@ -21,6 +21,13 @@ func TestTable_SchemaTablesDirPath(t *testing.T) {
 			Table{},
 			filepath.Join("schema", "tables"),
 		},
+		{
+			"returns override if present",
+			Table{
+				schemaTablesDirOverride: filepath.Join("lol", "path"),
+			},
+			filepath.Join("lol", "path"),
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -41,6 +48,13 @@ func TestTable_SchemaQueriesDirPath(t *testing.T) {
 			"returns schema/queries by default",
 			Table{},
 			filepath.Join("schema", "queries"),
+		},
+		{
+			"returns override if present",
+			Table{
+				schemaQueriesDirOverride: filepath.Join("lol", "path"),
+			},
+			filepath.Join("lol", "path"),
 		},
 	}
 	for _, tt := range tests {
@@ -64,6 +78,13 @@ func TestTable_DbModelsDirPath(t *testing.T) {
 				TableName: "hi",
 			},
 			filepath.Join("dbmodels", "hi"),
+		},
+		{
+			"returns override if present",
+			Table{
+				dbModelsDirOverride: filepath.Join("lol", "path"),
+			},
+			filepath.Join("lol", "path"),
 		},
 	}
 	for _, tt := range tests {
