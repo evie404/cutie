@@ -7,12 +7,12 @@ import (
 	"context"
 )
 
-const getByID = `-- name: GetByID :one
+const getCPUByID = `-- name: GetCPUByID :one
 SELECT id, make_id, name, cores, clock_speed_ghz, created_at, updated_at FROM cpu WHERE id = $1 LIMIT 1
 `
 
-func (q *Queries) GetByID(ctx context.Context, id int64) (CPU, error) {
-	row := q.db.QueryRowContext(ctx, getByID, id)
+func (q *Queries) GetCPUByID(ctx context.Context, id int64) (CPU, error) {
+	row := q.db.QueryRowContext(ctx, getCPUByID, id)
 	var i CPU
 	err := row.Scan(
 		&i.ID,

@@ -34,17 +34,17 @@ func (m *MockQuerier) EXPECT() *MockQuerierMockRecorder {
 	return m.recorder
 }
 
-// GetByID mocks base method
-func (m *MockQuerier) GetByID(ctx context.Context, id int64) (cpu.CPU, error) {
+// GetCPUByID mocks base method
+func (m *MockQuerier) GetCPUByID(ctx context.Context, id int64) (cpu.CPU, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetByID", ctx, id)
+	ret := m.ctrl.Call(m, "GetCPUByID", ctx, id)
 	ret0, _ := ret[0].(cpu.CPU)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetByID indicates an expected call of GetByID
-func (mr *MockQuerierMockRecorder) GetByID(ctx, id interface{}) *gomock.Call {
+// GetCPUByID indicates an expected call of GetCPUByID
+func (mr *MockQuerierMockRecorder) GetCPUByID(ctx, id interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetByID", reflect.TypeOf((*MockQuerier)(nil).GetByID), ctx, id)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetCPUByID", reflect.TypeOf((*MockQuerier)(nil).GetCPUByID), ctx, id)
 }
