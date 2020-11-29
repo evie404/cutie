@@ -12,7 +12,7 @@ jobs:
           POSTGRES_DB: testdb
           POSTGRES_HOST_AUTH_METHOD: trust
 
-    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+    working_directory: /go/src/github.com/rickypai/cutie
     steps:
       - checkout
       - run: go build -v ./...
