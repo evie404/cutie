@@ -3,6 +3,6 @@ setup_db:
 
 build:
 	rm -rf dbmodels
-	rm -rf schema
+	rm -rf schema/tables
 	(cd ../../ && go build cmd/main.go)
 	(DATABASE_URL=${QT_DATABASE_URL} ../../main && go build ./...)
