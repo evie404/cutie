@@ -5,11 +5,10 @@ import (
 	"io/ioutil"
 
 	"github.com/goccy/go-yaml"
-	"github.com/rickypai/cutie/table"
 )
 
 type Config struct {
-	Tables []table.Table `yaml:"tables"`
+	Tables []Table `yaml:"tables"`
 }
 
 func ParseConfigFromYAMLPath(configFilepath string) (*Config, error) {

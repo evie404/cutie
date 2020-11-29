@@ -6,7 +6,6 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/rickypai/cutie/table"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -58,7 +57,7 @@ func TestParseConfigFromYAMLPath(t *testing.T) {
 				filepath.Join("testdata", "tables1.yaml"),
 			},
 			&Config{
-				Tables: []table.Table{
+				Tables: []Table{
 					{
 						TableName:        "table_ones",
 						FilenameOverride: "table_one",

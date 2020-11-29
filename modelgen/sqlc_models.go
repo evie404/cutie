@@ -7,10 +7,10 @@ import (
 	"strings"
 
 	"github.com/jinzhu/inflection"
-	"github.com/rickypai/cutie/table"
+	"github.com/rickypai/cutie/config"
 )
 
-func GenerateSQLCModels(tables []table.Table) error {
+func GenerateSQLCModels(tables []config.Table) error {
 	// TODO: check sqlc version and warn
 
 	err := GenerateSQLCConfig(tables)
@@ -38,7 +38,7 @@ func GenerateSQLCModels(tables []table.Table) error {
 	return nil
 }
 
-func renameSQLCModelNames(tables []table.Table) error {
+func renameSQLCModelNames(tables []config.Table) error {
 	for _, table := range tables {
 		if table.ModelClass == "" {
 			continue
@@ -87,7 +87,7 @@ func sqlcDefaultModelClass(name string) string {
 	return out
 }
 
-func GenerateSQLCModelMocks(tables []table.Table) error {
+func GenerateSQLCModelMocks(tables []config.Table) error {
 	for _, table := range tables {
 		cmd := exec.Command(
 			"mockgen",

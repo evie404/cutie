@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"text/template"
+
+	"github.com/rickypai/cutie/config"
 )
 
 const queryTemplateRaw = `-- name: Get{{.ModelClass}}ByID :one
@@ -11,7 +13,7 @@ SELECT * FROM {{.TableName}} WHERE id = $1 LIMIT 1;
 
 `
 
-func CreateQueryAll(tables []Table) error {
+func CreateQueryAll(tables []config.Table) error {
 	var err error
 
 	for _, table := range tables {
@@ -24,7 +26,7 @@ func CreateQueryAll(tables []Table) error {
 	return nil
 }
 
-func CreateQuery(table Table) error {
+func CreateQuery(table config.Table) error {
 	var err error
 	_, err = os.Stat(table.QuerySQLPath())
 	if err == nil {

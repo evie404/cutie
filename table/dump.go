@@ -6,9 +6,10 @@ import (
 	"os/exec"
 
 	"github.com/jackc/pgconn"
+	"github.com/rickypai/cutie/config"
 )
 
-func DumpAll(dbConfig *pgconn.Config, tables []Table) error {
+func DumpAll(dbConfig *pgconn.Config, tables []config.Table) error {
 	var err error
 
 	for _, table := range tables {
@@ -21,7 +22,7 @@ func DumpAll(dbConfig *pgconn.Config, tables []Table) error {
 	return nil
 }
 
-func DumpOne(dbConfig *pgconn.Config, table Table) error {
+func DumpOne(dbConfig *pgconn.Config, table config.Table) error {
 	var err error
 
 	err = os.MkdirAll(table.SchemaTablesDirPath(), 0777)

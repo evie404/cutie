@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/rickypai/cutie/table"
+	"github.com/rickypai/cutie/config"
 )
 
 type v1GenerateSettings struct {
@@ -24,7 +24,7 @@ type v1PackageSettings struct {
 	EmitInterface bool   `json:"emit_interface" yaml:"emit_interface"`
 }
 
-func GenerateSQLCConfig(tables []table.Table) error {
+func GenerateSQLCConfig(tables []config.Table) error {
 	var err error
 
 	err = generateSQLCModelsDir(tables)
@@ -47,7 +47,7 @@ func GenerateSQLCConfig(tables []table.Table) error {
 	return nil
 }
 
-func generateSQLCModelsDir(tables []table.Table) error {
+func generateSQLCModelsDir(tables []config.Table) error {
 	var err error
 
 	for _, table := range tables {
@@ -60,7 +60,7 @@ func generateSQLCModelsDir(tables []table.Table) error {
 	return nil
 }
 
-func generateSQLCConfig(tables []table.Table) v1GenerateSettings {
+func generateSQLCConfig(tables []config.Table) v1GenerateSettings {
 	config := v1GenerateSettings{
 		Version: "1",
 	}
