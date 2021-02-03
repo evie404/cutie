@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/jackc/pgconn"
+	"github.com/jackc/pgx/v4"
 	"github.com/rickypai/cutie/config"
 	"github.com/rickypai/cutie/modelgen"
 	"github.com/rickypai/cutie/table"
@@ -16,7 +16,7 @@ func main() {
 		log.Fatalf("error loading tables: %s", err)
 	}
 
-	pgConfig, err := pgconn.ParseConfig(os.Getenv("DATABASE_URL"))
+	pgConfig, err := pgx.ParseConfig(os.Getenv("DATABASE_URL"))
 
 	err = table.DumpAll(pgConfig, tables)
 	if err != nil {
