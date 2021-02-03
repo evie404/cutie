@@ -102,6 +102,40 @@ func TestParseConfigFromYAMLPath(t *testing.T) {
 			},
 			false,
 		},
+		{
+			"load tables_with_enums.yaml",
+			args{
+				filepath.Join("testdata", "tables_with_enums.yaml"),
+			},
+			&Config{
+				Tables: []Table{
+					{
+						TableName:        "table_ones",
+						FilenameOverride: "table_one",
+						ModelClass:       "TableOne",
+						Enums: []Enum{
+							{
+								EnumName: "lol",
+							},
+							{
+								EnumName: "hi",
+							},
+						},
+					},
+					{
+						TableName:        "table_twos",
+						FilenameOverride: "table_two",
+						ModelClass:       "TableTwo",
+						Enums: []Enum{
+							{
+								EnumName: "twos",
+							},
+						},
+					},
+				},
+			},
+			false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

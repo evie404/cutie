@@ -1,0 +1,12 @@
+tables:
+  - name: table_ones
+    filename_override: table_one
+    model_class: TableOne
+    enums:
+      - name: lol
+      - name: hi
+  - name: table_twos
+    filename_override: table_two
+    model_class: TableTwo
+    enums:
+      - name: twos

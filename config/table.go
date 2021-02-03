@@ -10,6 +10,7 @@ type Table struct {
 	TableName        string `yaml:"name"`
 	FilenameOverride string `yaml:"filename_override"`
 	ModelClass       string `yaml:"model_class"`
+	Enums            []Enum `yaml:"enums"`
 
 	schemaTablesDirOverride  string
 	schemaQueriesDirOverride string
