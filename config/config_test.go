@@ -52,11 +52,20 @@ func TestParseConfigFromYAMLPath(t *testing.T) {
 			true,
 		},
 		{
+			"errors on file with no database",
+			args{
+				filepath.Join("testdata", "no_database.yaml"),
+			},
+			nil,
+			true,
+		},
+		{
 			"load tables1.yaml",
 			args{
 				filepath.Join("testdata", "tables1.yaml"),
 			},
 			&Config{
+				Database: "lol",
 				Tables: []Table{
 					{
 						TableName:        "table_ones",
@@ -78,6 +87,7 @@ func TestParseConfigFromYAMLPath(t *testing.T) {
 				filepath.Join("testdata", "tables_with_dir_override.yaml"),
 			},
 			&Config{
+				Database: "lol",
 				Tables: []Table{
 					{
 						TableName:                "table_ones",
@@ -108,6 +118,7 @@ func TestParseConfigFromYAMLPath(t *testing.T) {
 				filepath.Join("testdata", "tables_with_enums.yaml"),
 			},
 			&Config{
+				Database: "lol",
 				Tables: []Table{
 					{
 						TableName:        "table_ones",

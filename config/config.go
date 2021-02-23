@@ -30,6 +30,10 @@ func ParseConfigFromYAMLPath(configFilepath string) (*Config, error) {
 		return nil, fmt.Errorf("unmarshalling yaml: %w", err)
 	}
 
+	if config.Database == "" {
+		return nil, fmt.Errorf("no database found in %s", configFilepath)
+	}
+
 	for i, table := range config.Tables {
 		if table.IsValid() {
 			config.Tables[i].schemaTablesDirOverride = config.SchemaTablesDirOverride

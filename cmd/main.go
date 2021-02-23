@@ -17,6 +17,9 @@ func main() {
 	}
 
 	pgConfig, err := pgx.ParseConfig(os.Getenv("POSTGRES_HOST") + "/" + cfg.Database)
+	if err != nil {
+		log.Fatalf("error parse postgres connection string: %s", err)
+	}
 
 	tables := cfg.Tables
 	err = table.DumpAll(pgConfig, tables)
