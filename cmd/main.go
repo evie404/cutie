@@ -11,13 +11,14 @@ import (
 )
 
 func main() {
-	tables, err := config.TablesFromConfig(".cutie.yaml")
+	cfg, err := config.ParseConfigFromYAMLPath(".cutie.yaml")
 	if err != nil {
-		log.Fatalf("error loading tables: %s", err)
+		log.Fatalf("error loading config: %s", err)
 	}
 
-	pgConfig, err := pgx.ParseConfig(os.Getenv("DATABASE_URL"))
+	pgConfig, err := pgx.ParseConfig(os.Getenv("POSTGRES_HOST") + "/" + cfg.Database)
 
+	tables := cfg.Tables
 	err = table.DumpAll(pgConfig, tables)
 	if err != nil {
 		log.Fatalf("error dumping tables: %s", err)

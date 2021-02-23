@@ -87,14 +87,14 @@ func dumpEnums(dbConfig *pgx.ConnConfig, table config.Table) error {
 			var value string
 			err = rows.Scan(&value)
 			if err != nil {
-				return fmt.Errorf("querying enum %s value row: %w", enum.EnumName, query, err)
+				return fmt.Errorf("querying enum %s value row: %w", enum.EnumName, err)
 			}
 
 			values = append(values, fmt.Sprintf("'%s'", value))
 		}
 		err = rows.Err()
 		if err != nil {
-			return fmt.Errorf("querying enum %s value row: %w", enum.EnumName, query, err)
+			return fmt.Errorf("querying enum %s value row: %w", enum.EnumName, err)
 		}
 
 		createStatement := fmt.Sprintf(`CREATE TYPE %s AS ENUM (%s);`, enum.EnumName, strings.Join(values, ", "))
