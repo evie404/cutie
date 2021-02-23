@@ -8,6 +8,8 @@ import (
 )
 
 type Config struct {
+	Database string `yaml:"database"`
+
 	Tables []Table `yaml:"tables"`
 
 	SchemaTablesDirOverride  string `yaml:"schema_tables_dir"`

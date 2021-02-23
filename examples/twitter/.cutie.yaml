@@ -1,3 +1,4 @@
+database: testdb
 tables:
   - name: twitter_users
     filename_override: twitter_user
