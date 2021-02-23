@@ -19,7 +19,7 @@ jobs:
       - run: go test -v ./...
       - run: sudo apt-get update
       - run: sudo apt-get install -y postgresql-client
-      - run: go get github.com/kyleconroy/sqlc/cmd/sqlc
+      - run: GO111MODULE=on go get github.com/kyleconroy/sqlc/cmd/sqlc@v1.6.0
       - run: GO111MODULE=on go get github.com/golang/mock/mockgen@v1.4.4
       - run: go get golang.org/x/tools/cmd/gorename
       - run: make test_examples
